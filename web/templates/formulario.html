@@ -9,7 +9,7 @@
     <h1>Formulario</h1>
     <form method="POST">
         {% csrf_token %}
-        {{ form }}
+        {{ form.as_ul }}
         <input type="submit" value="Enviar">
     </form>
 
@@ -17,6 +17,14 @@
         <h2>Datos enviados</h2>
         <p>Nombre: {{ nombre}}</p>
         <p>Edad: {{ edad }}</p>
+    {% endif %}
+
+    {% if form.errors %}
+        <h2>Errores</h2>
+        <p>form.errors.items</p>
+        {% for i in form.errors.items %}
+            <p>{{i}}</p>
+        {% endfor %}
     {% endif %}
 
 

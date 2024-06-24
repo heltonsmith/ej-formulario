@@ -9,13 +9,15 @@ def hola(request):
 def abrir_formulario(request):
     nombre = None 
     edad = None 
+    email = None
 
     if request.method == 'POST':
         form = SimpleForm(request.POST)
         if form.is_valid():
             nombre = form.cleaned_data["nombre"]
             edad = form.cleaned_data["edad"]
+            email = form.cleaned_data["email"]
     else:
         form = SimpleForm()
 
-    return render(request, 'formulario.html', {'form': form, 'nombre': nombre, 'edad': edad})
+    return render(request, 'formulario.html', {'form': form, 'nombre': nombre, 'edad': edad, 'email': email})
